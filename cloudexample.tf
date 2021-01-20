@@ -11,5 +11,5 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "example" {
   name     = "azurermforme01"
-  location = "east-us"
+  location = "westus"
 }
