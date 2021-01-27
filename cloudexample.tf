@@ -8,18 +8,13 @@ provider "azurerm" {
 
   features {}
 }
-resource "random_string" "random" {
-  length     = 12
-  lower = true
-}
-
 resource "azurerm_resource_group" "example" {
   name     = "azurermforme01"
   location = "westus"
 }
 
 resource "azurerm_storage_account" "examplee" {
-  name                     = random_string.random.result
+  name                     = azurerm_resource_group.example.name
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
   account_tier             = "Standard"
