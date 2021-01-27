@@ -14,11 +14,7 @@ pipeline{
                 sh '''terraform init'''
             }
         }
-        stage('Terraform plan'){
-            steps{
-                 sh 'terraform plan -out=/var/lib/jenkins/workspace/Terraform/ -auto-approve'
-            }
-        }
+        
         stage('Terraform apply'){
             steps{
                 sh 'terraform apply -auto-approve'
