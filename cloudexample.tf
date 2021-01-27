@@ -14,7 +14,7 @@ resource "azurerm_resource_group" "example" {
   location = "westus"
 }
 resource "azurerm_storage_account" "examplee" {
-  name                     = "[concat('storage', uniqueString(azurerm_resource_group().id))]]
+  name                     = "[concat('storage', uniqueString(resourcegroup().id))]]
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
   account_tier             = "Standard"
