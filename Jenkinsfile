@@ -16,7 +16,7 @@ pipeline{
         }
         stage('Terraform plan'){
             steps{
-                 sh 'terraform plan -out=/var/lib/jenkins/workspace/Terraform/plan.tf -auto-approve'
+                 sh 'terraform plan -out=/var/lib/jenkins/workspace/Terraform/ -auto-approve'
             }
         }
         stage('Terraform apply'){
