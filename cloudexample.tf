@@ -13,7 +13,7 @@ resource "azurerm_resource_group" "example" {
   name     = "azurermforme01"
   location = "westus"
 }
-resource "azurerm_storage_account" "example" {
+resource "azurerm_storage_account" "examplee" {
   name                     = "storageaccountname"
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
