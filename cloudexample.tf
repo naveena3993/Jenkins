@@ -11,7 +11,6 @@ provider "azurerm" {
 resource "random_string" "random" {
   length     = 12
   lower = true
-  min_numeric = 2
 }
 
 resource "azurerm_resource_group" "example" {
