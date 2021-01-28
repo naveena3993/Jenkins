@@ -16,10 +16,13 @@ pipeline{
             clientsecret= '$AZURE_CLIENT_SECRET';
             TenantID= '$AZURE_TENANT_ID';
             subscriptionid='$Azure_Subscription_ID'
-      {
+            {
+                scripts{
                 sh '''terraform init'''
+                }
             }
         }
+       }
         
         stage('Terraform apply'){
             steps{
@@ -28,4 +31,4 @@ pipeline{
         }
     }
 }
-}
+
