@@ -12,10 +12,10 @@ pipeline{
         stage('Terraform init'){
             steps{
             withCredentials([azureServicePrincipal('dev-azure-com')])
-            clientId='$AZURE_CLIENT_ID',
-            clientsecret: '$AZURE_CLIENT_SECRET'
-            TenantID: '$AZURE_TENANT_ID'
-            subscriptionid: '$Azure_Subscription_ID'
+            clientId='$AZURE_CLIENT_ID';
+            clientsecret= '$AZURE_CLIENT_SECRET';
+            TenantID= '$AZURE_TENANT_ID';
+            subscriptionid='$Azure_Subscription_ID'
       ]]) {
                 sh '''terraform init'''
             }
