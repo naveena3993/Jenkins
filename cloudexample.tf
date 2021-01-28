@@ -8,7 +8,7 @@ provider "azurerm" {
   features {}
 }
 resource "azurerm_resource_group" "example" {
-  name     = "azurermfrrrorme01"
+  name     = "azurermfrorme01"
   location = "westus"
 }
 
