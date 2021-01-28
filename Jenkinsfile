@@ -11,22 +11,10 @@ pipeline{
         }
         stage('Terraform init'){
             steps{
-                script{
-                withCredentials([[
-            $class: 'Azureserviceprinciplebinding',
-            credentialsId: 'dev-azure-com',
-            clientId:'$AZURE_CLIENT_ID',
-            clientsecret: '$AZURE_CLIENT_SECRET',
-            TenantID: '$AZURE_TENANT_ID',
-            subscriptionid:'$Azure_Subscription_ID'
-                ]])}
-            
-                script{
-                sh '''terraform init'''
-                }
-                } 
-       }
-        
+                sh 'terraform init'
+            }
+        }
+         
         stage('Terraform apply'){
             steps{
                 sh 'terraform apply -auto-approve'
