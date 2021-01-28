@@ -10,7 +10,7 @@ pipeline{
            }
         }
         stage('Terraform init'){
-            step{
+            steps{
                 script{
                 withCredentials([[
             $class: 'Azureserviceprinciplebinding',
