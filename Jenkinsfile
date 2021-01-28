@@ -10,7 +10,6 @@ pipeline{
            }
         }
         stage('Terraform init'){
-            steps{
                 withCredentials([[
             $class: 'Azureserviceprinciplebinding',
             credentialsId: 'dev-azure-com',
@@ -23,7 +22,7 @@ pipeline{
                 script{
                 sh '''terraform init'''
                 }
-               }
+               
        }
         
         stage('Terraform apply'){
