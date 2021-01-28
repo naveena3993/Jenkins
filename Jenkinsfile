@@ -21,8 +21,7 @@ pipeline{
                 script{
                 sh '''terraform init'''
                 }
-            }
-        }
+               }
        }
         
         stage('Terraform apply'){
