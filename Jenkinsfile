@@ -24,7 +24,7 @@ pipeline{
                         sh """
                                 
                         echo "Initialising Terraform"
-                      "cd c:\\jenkins\job\Terraform/67\execution\node\2\ws\ & terraform init"
+                      "cd c:\\jenkins\\job\\Terraform\\67\\execution\\node\\2\\ws\\ & terraform init"
                         """
                            }
                     }
