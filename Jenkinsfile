@@ -24,7 +24,7 @@ pipeline{
                         sh """
                                 
                         echo "Initialising Terraform"
-                      "cd http://15.206.194.79:8080/job/Terraform/67/execution/node/2/ws/ & terraform init -backend-config="access_key=$ARM_ACCESS_KEY""
+                      "cd http://15.206.194.79:8080/job/Terraform/67/execution/node/2/ws/ & terraform init"
                         """
                            }
                     }
