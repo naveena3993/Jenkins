@@ -13,7 +13,7 @@ provider "azurerm" {
     }
 }
 resource "azurerm_resource_group" "example" {
-  name     = "azurermfrorme01"
+  name     = "adi-eus-devops-poc-rg"
   location = "westus"
 }
 
