@@ -12,7 +12,7 @@ provider "azurerm" {
   }
 }
 
-data "azurerm_client_config" "current" {}
+
 
 resource "azurerm_resource_group" "example" {
   name     = "adi-eus-devops-poc-rg"
@@ -30,8 +30,8 @@ resource "azurerm_key_vault" "example" {
   sku_name = "standard"
     
      access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
+    tenant_id = var.tenant_id
+    object_id = var.client_id
 
     key_permissions = [
       "get",
