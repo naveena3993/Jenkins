@@ -1,6 +1,3 @@
-
-# Provider Block
-
 provider "azurerm" {
     version         =   ">= 2.26"
     client_id       =   var.client_id
@@ -9,22 +6,24 @@ provider "azurerm" {
     tenant_id       =   var.tenant_id
     
     features {
-       
+    key_vault {
+      purge_soft_delete_on_destroy = true
     }
+  }
 }
 resource "azurerm_resource_group" "example" {
   name     = "adi-eus-devops-poc-rg"
   location = "westus"
 }
+resource "azurerm_key_vault" "example" {
+  name                        = "examplekeyvault"
+  location                    = azurerm_resource_group.example.location
+  resource_group_name         = azurerm_resource_group.example.name
+  enabled_for_disk_encryption = true
+  soft_delete_retention_days  = 7
+  purge_protection_enabled    = false
 
-resource "azurerm_storage_account" "examplee" {
-  name                     = azurerm_resource_group.example.name
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
+  sku_name = "standard"
 
-  tags = {
-    environment = "staging"
-  }
 }
+
