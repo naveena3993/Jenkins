@@ -24,7 +24,7 @@ pipeline{
                         sh """
                                 
                         echo "Initialising Terraform"
-                      terraform init
+                     cd /var/lib/jenkins & terraform init
                         """
                            }
                     }
