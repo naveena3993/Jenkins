@@ -24,7 +24,7 @@ pipeline{
                         sh """
                                 
                         echo "Initialising Terraform"
-                      "cd c:\\jenkins\\job\\Terraform\\67\\execution\\node\\2\\ws\\ & terraform init"
+                      terraform init
                         """
                            }
                     }
@@ -65,7 +65,7 @@ pipeline{
                         sh """
                         
                         echo "Creating Terraform Plan"
-                       "cd http://15.206.194.79:8080/job/Terraform/67/execution/node/2/ws/ & terraform plan -out=http://15.206.194.79:8080/job/Terraform/67/execution/node/2/ws/ -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID""
+                       terraform plan -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID""
                         """
                         }
                 }
