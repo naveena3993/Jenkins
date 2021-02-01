@@ -1,11 +1,27 @@
 provider "azurerm" {
   # Whilst version is optional, we /strongly recommend/ using it to pin the version of the Provider being used
 
-  subscription_id = "71ce6b58-b10d-4f36-8f98-b1728111b315"
-  client_id       = "de02f09c-5666-4b88-9a15-38a37a098704"
-  client_secret   = "5UX~S9.qv-BT.x3W~KX6Pg80Zdxd3_pU2W"
-  tenant_id       = "4536e94f-051b-4555-893d-1529df2d08eb"
-  features {}
+terraform {
+    backend "azurerm" {
+        resource_group_name     =   "Jenkins"
+        storage_account_name    =   "tfbackend2020"
+        container_name          =   "tfremote"
+        key                     =   "terraform.tfstate"
+    }
+}
+
+# Provider Block
+
+provider "azurerm" {
+    version         =   ">= 2.26"
+    client_id       =   var.client_id
+    client_secret   =   var.client_secret
+    subscription_id =   var.subscription_id
+    tenant_id       =   var.tenant_id
+    
+    features {
+       
+    }
 }
 resource "azurerm_resource_group" "example" {
   name     = "azurermfrorme01"
