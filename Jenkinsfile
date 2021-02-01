@@ -66,7 +66,7 @@ pipeline{
                         sh """
                         
                         echo "Creating Terraform Plan"
-                        terraform plan -target=main.tf -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID"
+                        terraform plan -resource=azurerm_resource_group.example -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID"
                         """
                         }
                 }
