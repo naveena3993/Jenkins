@@ -11,6 +11,9 @@ provider "azurerm" {
     }
   }
 }
+
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "example" {
   name     = "adi-eus-devops-poc-rg"
   location = "westus"
@@ -25,6 +28,24 @@ resource "azurerm_key_vault" "example" {
   purge_protection_enabled    = false
 
   sku_name = "standard"
+    
+     access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
+
+    key_permissions = [
+      "get",
+    ]
+
+    secret_permissions = [
+      "get",
+    ]
+
+    storage_permissions = [
+      "get",
+    ]
 
 }
+
+
 
