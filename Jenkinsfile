@@ -24,7 +24,7 @@ pipeline{
                         sh """
                                 
                         echo "Initialising Terraform"
-                        terraform init -backend-config="access_key=$ARM_ACCESS_KEY"
+                      cd /var/lib/jenkins/workspace/Terraform@script/ & terraform init -backend-config="access_key=$ARM_ACCESS_KEY"
                         """
                            }
                     }
@@ -65,7 +65,7 @@ pipeline{
                         sh """
                         
                         echo "Creating Terraform Plan"
-                        terraform plan -out=/var/lib/jenkins/workspace/Terraform@script/ -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID"
+                       cd /var/lib/jenkins/workspace/Terraform@script/ & terraform plan -out=/var/lib/jenkins/workspace/Terraform@script/ -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID"
                         """
                         }
                 }
