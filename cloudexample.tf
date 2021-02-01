@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "example" {
   location = "westus"
 }
 resource "azurerm_key_vault" "example" {
-  name                        = "examplekeyvault01"
+  name                        = "examplekeyvault0101"
   location                    = azurerm_resource_group.example.location
   resource_group_name         = azurerm_resource_group.example.name
   enabled_for_disk_encryption = true
