@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('Git checkout'){
             steps{
-               git branch: 'main', credentialsId: '957b5ca3-2495-482e-8bd8-c98f1525cd59', url: 'https://github.com/naveena3993/Jenkins.git'
+               git credentialsId: '836f1cd0-78c0-4c51-a21c-d365f759f7b6', url: 'https://github.com/naveena3993/Jenkins.git'
            }
         }
         stage('Terraform Init'){
