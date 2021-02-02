@@ -25,10 +25,22 @@ resource "azurerm_key_vault" "example" {
   enabled_for_disk_encryption = true
   soft_delete_retention_days  = 7
   tenant_id                   = var.tenant_id
-  purge_protection_enabled    = false
+  purge_protection_enabled    = True
 
   sku_name = "standard"
     
+}
+
+resource "azurerm_storage_account" "examplee" {
+  name                     = "storage01testing01"
+  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.example.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
+
+  tags = {
+    environment = "staging"
+  }
 }
 
 
