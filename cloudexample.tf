@@ -1,3 +1,10 @@
+terraform {
+  backend "azurerm" {
+    storage_account_name = "storage01testing01"
+    container_name       = "test"
+    key                  = "prod.terraform.tfstate"
+  }
+}
 provider "azurerm" {
     version         =   ">= 2.26"
     client_id       =   var.client_id
@@ -11,15 +18,6 @@ provider "azurerm" {
     }
   }
 }
-terraform {
-  backend "azurerm" {
-    storage_account_name = "storage01testing01"
-    container_name       = "test"
-    key                  = "prod.terraform.tfstate"
-  }
-}
-
-
 resource "azurerm_resource_group" "example" {
   name     = "adi-eus-devops-poc-rg"
   location = "westus"
