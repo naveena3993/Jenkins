@@ -23,3 +23,8 @@ variable "tenant_id" {
     description =   "Tenant ID"
     type        =   string
 }
+
+variable "access_key" {
+    description =   "Tenant ID"
+    type        =   string
+}
