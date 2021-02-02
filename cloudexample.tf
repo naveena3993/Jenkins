@@ -25,7 +25,7 @@ resource "azurerm_key_vault" "example" {
   enabled_for_disk_encryption = true
   soft_delete_retention_days  = 7
   tenant_id                   = var.tenant_id
-  purge_protection_enabled    = True
+  purge_protection_enabled    = false
 
   sku_name = "standard"
     
