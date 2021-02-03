@@ -1,10 +1,3 @@
-terraform {
-  backend "azurerm" {
-    storage_account_name = "storage01testing01"
-    container_name       = "test"
-    key                  = "prod.terraform.tfstate"
-  }
-}
 provider "azurerm" {
     features {
     key_vault {
