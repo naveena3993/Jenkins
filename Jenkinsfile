@@ -16,7 +16,7 @@ pipeline{
                       sh """
                                 
                         echo "Initialising Terraform"
-                     cd /var/lib/jenkins & terraform init
+                      terraform init
                         """
                            }
                    }
@@ -24,7 +24,6 @@ pipeline{
         stage('Terraform Validate'){
             
             steps {
-                    
                         sh """
                                 
                         terraform validate
