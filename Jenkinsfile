@@ -39,8 +39,7 @@ pipeline{
                         terraform validate
                         """
                            }
-                    
-             
+                
         }
                 stage('Terraform Plan'){
             steps {
@@ -74,9 +73,6 @@ pipeline{
                         """
                     }
             }
-        }
-        
-
-    }   
+        } 
    
 }
