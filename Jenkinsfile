@@ -1,0 +1,63 @@
+pipeline{
+    agent any
+    tools {
+        terraform 'terraform'
+    }
+  stages {
+        stage('Git checkout') {
+      steps {
+        git credentialsId: '836f1cd0-78c0-4c51-a21c-d365f759f7b6', url: 'https://github.com/naveena3993/aws-terrform-jenkins.git'
+      }
+        }
+  // Run terraform init
+  stage('init') {
+  steps {
+      withCredentials([awsCredentials(
+        credentialsId: 'aws-dev-cred',
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+      )]) {
+        sh ''' terraform init '''
+         // bat  "for /D %G in ("*") do cd "%~fG" & terraform init & cd .."
+
+      }
+    }
+  }
+
+  // Run terraform plan
+  stage('plan') {
+    steps {
+      withCredentials([awsCredentials(
+        credentialsId: 'aws-dev-cred',
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+      )]) {
+	      sh '''
+	cd /var/lib/jenkins & terraform plan
+	     '''
+       // bat "for /D %G in ("*") do cd "%~fG" & terraform plan & cd .."
+
+      }
+    }
+  }
+
+    // Run terraform apply
+    stage('apply') {
+      steps {
+        withCredentials([awsCredentials(
+        credentialsId: 'aws-dev-cred',
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+      )]) {
+sh '''
+	cd /var/lib/jenkins & terraform apply -auto-approve
+	'''
+        // bat "for /D %G in ("*") do cd "%~fG" & terraform apply -auto-approve & cd .. "
+          
+        }
+      }
+
+  }
+
+}
+}
